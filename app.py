@@ -72,7 +72,7 @@ start_button = InlineKeyboardMarkup(
             ]
 )
 
-@app.on_message(filters.command("fakestart"))
+@app.on_message(filters.command("start"))
 async def start(_, message: Message):
     try:
        await message._client.get_chat_member(-1001719968457, message.from_user.id)
