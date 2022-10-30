@@ -1,39 +1,50 @@
 {
-    "name": "Temp Mail Bot",
-    "description": "Temp Mail gen bot",
-    "repository": "https://github.com/RishBroproMax/Temp-Mail-Bot",
-    "keywords": [
-        "Bot",
-        "Telegram ",
-        "Pyrogram "
-    ],
-    "env": {
-        "API_ID": {
-            "description": "Get from my.telegram.org/apps",
-            "required": true
-        },
-        "API_HASH": {
-            "description": "Get from my.telegram.org/apps",
-            "required": true
-        },
-        "BOT_TOKEN": {
-            "description": "get from @BotFather",
-            "required": true
-        },
-        "DATABASE": {
-            "description": "get from mongo",
-            "required": true
-        }
-    },
-    "formation": {
+  "name": "temp Mail-Bot",
+  "description": "temp Mail Bot",
+  "keywords": [
+    "telegram",
+    "bot",
+    "python",
+    "pyrogram"
+  ],
+    "buildpacks": [{
+    "url": "heroku/python"
+  }],
+  "formation": {
     "worker": {
       "quantity": 1,
       "size": "free"
     }
   },
-    "buildpacks": [
-        {
-            "url": "heroku/python"
-        }
-    ]
+  "addons": [
+      {
+         "options": {
+            "version": "12"
+         },
+         "plan": "heroku-postgresql"
+      }
+   ],
+  "repository": "https://github.com/RishBroProMax/Temp-Mail-Bot",
+  "env": {
+    "API_ID": {
+      "description": "Get this value from my.telegram.org",
+      "required": true,
+      "value": ""
+    },
+    "API_HASH": {
+      "description": "Get this value from my.telegram.org.",
+      "required": true,
+      "value": ""
+    },
+    "BOT_TOKEN": {
+      "description": "Obtain a Telegram bot token by contacting @BotFather",
+      "required": true,
+      "value": ""
+    },
+    "DATABASE": {
+      "description": "Add username/id of a channel/group",
+      "required": false,
+      "value": "EmoBotDevolopers"
+    }
+  }
 }
