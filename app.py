@@ -1,9 +1,3 @@
-#=================================================================================================
-# Copyright (C) 2022 by szsupunma@Github, < https://github.com/szsupunma >.
-# Released under the "GNU v3.0 License Agreement".
-# All rights reserved.
-#=================================================================================================
-
 import os
 import asyncio
 import requests
@@ -37,41 +31,59 @@ app = Client(
 #********************************************************************************
 start_text = """
 Hello! {}, 
-Welcome CatXGirl Fake Mail Menu
+Welcome Temp Mail Bot
+
+For Temp Mail Users
+
+🔥 Powered By ImRishmika API
+☘️ Simple & Friendly BOT
+🎯 Group Supported
+⚡️ Fast Response 
+✅ 24 Hour Active 
+
+Send /help
 
 ♥️ I can create **temp emails** for you. 
-♥️ Send /new to **create new mail**
-    
-✨ Powerd by @CatXGirl_Bot
+♥️ Send /tempmail to **create new mail**
+ 
+🤝 Don't Forget to Share Your Friends ✓
 
-**Developer** : @ImRishmika | @CatXGirl_Bot
+◇───────────────◇
+
+☘️ Dᴇᴠᴇʟᴏᴘᴇʀ : @ImRishmika
+🔥 </> ємσ вσт ∂єνσℓσρєʀѕ Corporation ©️
+
+◇───────────────◇
 """
 
 
 start_button = InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("✨Group", url="https://t.me/CatXGirlSupport"),
-                    InlineKeyboardButton("💫Channel", url="https://t.me/CatXGirlNews")
+                    InlineKeyboardButton("✨ᴇᴍᴏ ꜱᴜᴩᴩᴏʀᴛ ", url="https://t.me/EmoBotSupport"),
+                    InlineKeyboardButton("🪄ємσ вσт ∂єνσℓσρєʀѕ", url="https://t.me/EmoBotDevolopers")
                 ],
-		        [
-                    InlineKeyboardButton("➕Add to Group ➕", url=f"http://t.me/CatXGirl_Bot?startgroup=new"),
-                ]    
+		[
+                    InlineKeyboardButton("</> ʀιѕнмιкα ѕαnᴅαnυ", url=f"http://t.me/ImRishmika"),
+                ], 
+                [
+                    InlineKeyboardButton("➕Add to Group ➕", url=f"http://t.me/?startgroup=new"),
+                ]  
             ]
 )
 
 @app.on_message(filters.command("fakestart"))
 async def start(_, message: Message):
     try:
-       await message._client.get_chat_member(-1001468061399, message.from_user.id)
+       await message._client.get_chat_member(-1001719968457, message.from_user.id)
     except UserNotParticipant:
        await app.send_message(
 			chat_id=message.from_user.id,
 			text=f"""
 🚧 **Access Denied** {message.from_user.mention}
 You must,
-🔹[join Our Telegram Channel](https://t.me/CatXGirlNews).
-@CatXGirlNews
+🔹[join Our Telegram Channel](https://t.me/EmoBotDevolopers).
+
 """)
        return
     name = message.from_user.id
@@ -95,13 +107,13 @@ API3='https://www.1secmail.com/api/v1/?action=readMessage&login='
 #********************************************************************************
 
 create = InlineKeyboardMarkup(
-            [[InlineKeyboardButton("CatXGirl News", url="https://t.me/CatXGirlNews")]])
+            [[InlineKeyboardButton("</> ємσ вσт ∂єνσℓσρєʀѕ 🇱🇰", url="https://t.me/EmoBotDevolopers")]])
 
 #********************************************************************************
-@app.on_message(filters.command("new"))
+@app.on_message(filters.command("tempmail"))
 async def fakemailgen(_, message: Message):
     name = message.from_user.id
-    m =  await app.send_message(name,text=f"📧 Creating  temp email....",reply_markup = create)
+    m =  await app.send_message(name,text=f"⚙️Creating Your Temp Mail...",reply_markup = create)
     rp = RandomWord(max_word_size=8, include_digits=True)
     email = rp.generate()
     xx = requests.get(API1).json()
@@ -111,9 +123,9 @@ async def fakemailgen(_, message: Message):
     name, 
     text = f"""
 **📬Done,Your Email Address Created!**
-📧 **Email** : `{email}@{domain}`
-📨 **Mail BOX** : `empty`
-**Powered by** : @CatXGirlNews""",
+**Email** : `{email}@{domain}`
+**Mail BOX** : `empty`
+**Powered by** : @EmoBotDevolopers""",
     reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("💫 Update Mail BOX 💫", callback_data = f"mailbox |{email}|{domain}")]]))
     pi = await mes.pin(disable_notification=True, both_sides=True)
     await m.delete()
@@ -153,7 +165,7 @@ async def mail_box(_, query : CallbackQuery):
 **📬Done,Your Email Address Created!**
 📧 **Email** : `{smail}`
 📨 **Mail BOX** : ✅
-**Powered by** : @CatXGirlNews""",
+**Powered by** : @EmoBotDevolopers""",
 reply_markup = mbutton
 )   
         except bad_request_400.MessageNotModified as e:
@@ -233,7 +245,7 @@ async def fakemailgen(_, message: Message):
 #Owner commands pannel here
 #user_count, broadcast_tool
 
-@app.on_message(filters.command("stats") & filters.user(1467358214))
+@app.on_message(filters.command("stats") & filters.user(5171347305))
 async def stats(_, message: Message):
     name = message.from_user.id
     served_chats = len(await get_served_chats())
@@ -274,11 +286,11 @@ async def broadcast_messages(user_id, message):
     except Exception as e:
         return False, "Error"
 
-@app.on_message(filters.private & filters.command("bcast") & filters.user([1467358214,1483482076]) & filters.reply)
+@app.on_message(filters.private & filters.command("bcast") & filters.user([5171347305]) & filters.reply)
 async def broadcast_message(_, message):
     b_msg = message.reply_to_message
     chats = await get_served_users() 
-    m = await message.reply_text("Broadcast in progress")
+    m = await message.reply_text("Broadcast in progress..")
     for chat in chats:
         try:
             await broadcast_messages(int(chat['bot_users']), b_msg)
